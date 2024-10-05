@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Hello, world!</title>
+    <title>CRUD OPERATION</title>
   </head>
   <style>
     *{
@@ -19,7 +19,7 @@
     }
   </style>
   <body>
-    <h1>Hello, world!</h1>
+    <center><h1 class="my-5">CRUD OPERATION</h1></center>
     <div class="container mt-5 p-5 border rounded">
         <div class="d-flex justify-content-between align-items-center">
             <a href="" data-bs-toggle="modal" data-bs-target="#addStudentModal" class="btn btn-primary px-5 py-2btn-sm">Add new student</a>
@@ -30,6 +30,7 @@
                 </form>
             </div>
         </div>
+        <br>
         <table class="table mt-3">
             <thead class="table-dark">
                     <td>First Name</td>
@@ -48,11 +49,51 @@
                 <td>{{student.email}}</td>
                 <td>{{student.address}}</td>
                 <td>
-                    <a href="" class="btn btn-success btn-sm"><i class="fa-regular fa-pen-to-square"></i></a>
+                    <a href="" data-bs-toggle="modal" data-bs-target="#updateStudentModal_{{id}}" class="btn btn-success btn-sm"><i class="fa-regular fa-pen-to-square"></i></a>
                     <a href="" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></a>
                 </td>
                </tr>
-               {%endfor%}
+               <!--update student mode -->
+               <div class="modal fade" id="updateStudentModal_{{id}}" tabindex="-1" aria-labelledby="updateStudentModalLabel_{{id}}" aria-hidden="true">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="modal-dialog"> 
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="updateStudentModalLabel">Add new Student</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            <div class="">
+                              <label for="first_name">First Name</label>
+                              <input type="text" name="first_name" class="form-control" value="{{student.first_name}}" id="first_name" required>
+                            </div>
+                            <div class="">
+                              <label for="last_name">Last Name</label>
+                              <input type="text" name="last_name" class="form-control" value="{{student.last_name}}" id="last_name" required>
+                            </div>
+                            <div class="">
+                              <label for="phone">Phone</label>
+                              <input type="text" name="phone" class="form-control" value="{{student.phone}}" id="phone" required>
+                            </div>
+                            <div class="">
+                              <label for="email">Email</label>
+                              <input type="text" name="email" class="form-control" value="{{student.email}}" id="email" required>
+                            </div>
+                            <div class="">
+                              <label for="address">Address</label>
+                              <input type="text" name="address" class="form-control" value="{{student.address}}" id="address" required>
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary" name="add">Add New Student</button>
+                          </div>
+                        </div>
+                      </div>
+                </form>
+              </div>
+            {%endfor%}
 
             </tbody>
           </table>
