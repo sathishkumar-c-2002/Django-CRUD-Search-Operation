@@ -30,44 +30,66 @@
                 </form>
             </div>
         </div>
+        <table class="table mt-3">
+            <thead class="table-dark">
+                    <td>First Name</td>
+                    <td>Last Name</td>
+                    <td>Phone</td>
+                    <td>Email</td>
+                    <td>Address</td>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Pradeep</td>
+                    <td>Palanisamy</td>
+                    <td>1234567890</td>
+                    <td>Pradeepdeveloper24@gmail.com</td>
+                    <td>MEtala,Rasipuram</td>
+                </tr>
+
+            </tbody>
+          </table>
     </div>
   
   <!-- Modal -->
   <div class="modal fade" id="addStudentModal" tabindex="-1" aria-labelledby="addStudentModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="addStudentModalLabel">Add new Student</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div class="">
-            <label for="first_name">First Name</label>
-            <input type="text" name="first_name" class="form-control" id="first_name">
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="modal-dialog"> 
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="addStudentModalLabel">Add new Student</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <div class="">
+                  <label for="first_name">First Name</label>
+                  <input type="text" name="first_name" class="form-control" id="first_name" required>
+                </div>
+                <div class="">
+                  <label for="last_name">Last Name</label>
+                  <input type="text" name="last_name" class="form-control" id="last_name" required>
+                </div>
+                <div class="">
+                  <label for="phone">Phone</label>
+                  <input type="text" name="phone" class="form-control" id="phone" required>
+                </div>
+                <div class="">
+                  <label for="email">Email</label>
+                  <input type="text" name="email" class="form-control" id="email" required>
+                </div>
+                <div class="">
+                  <label for="address">Address</label>
+                  <input type="text" name="address" class="form-control" id="address" required>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" name="add">Add New Student</button>
+              </div>
+            </div>
           </div>
-          <div class="">
-            <label for="last_name">Last Name</label>
-            <input type="text" name="last_name" class="form-control" id="last_name">
-          </div>
-          <div class="">
-            <label for="phone">Phone</label>
-            <input type="text" name="phone" class="form-control" id="phone">
-          </div>
-          <div class="">
-            <label for="email">Email</label>
-            <input type="text" name="email" class="form-control" id="email">
-          </div>
-          <div class="">
-            <label for="address">Address</label>
-            <input type="text" name="address" class="form-control" id="address">
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
+    </form>
   </div>
 
 
