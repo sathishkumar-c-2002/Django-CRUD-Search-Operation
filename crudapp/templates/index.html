@@ -33,6 +33,7 @@
         <br>
         <table class="table mt-3">
             <thead class="table-dark">
+                    <td>S.No</td>
                     <td>First Name</td>
                     <td>Last Name</td>
                     <td>Phone</td>
@@ -43,24 +44,25 @@
             <tbody>
                {% for student in students%}
                <tr>
+                <td>{{student.id}}</td>
                 <td>{{student.first_name}}</td>
                 <td>{{student.last_name}}</td>
                 <td>{{student.phone}}</td>
                 <td>{{student.email}}</td>
                 <td>{{student.address}}</td>
                 <td>
-                    <a href="" data-bs-toggle="modal" data-bs-target="#updateStudentModal_{{id}}" class="btn btn-success btn-sm"><i class="fa-regular fa-pen-to-square"></i></a>
+                    <a href="" data-bs-toggle="modal" data-bs-target="#updateStudentModal_{{student.id}}" class="btn btn-success btn-sm"><i class="fa-regular fa-pen-to-square"></i></a>
                     <a href="" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></a>
                 </td>
                </tr>
                <!--update student mode -->
-               <div class="modal fade" id="updateStudentModal_{{id}}" tabindex="-1" aria-labelledby="updateStudentModalLabel_{{id}}" aria-hidden="true">
+               <div class="modal fade" id="updateStudentModal_{{student.id}}" tabindex="-1" aria-labelledby="updateStudentModalLabel_{{student.id}}" aria-hidden="true">
                 <form action="" method="post">
                     {% csrf_token %}
                     <div class="modal-dialog"> 
                         <div class="modal-content">
                           <div class="modal-header">
-                            <h5 class="modal-title" id="updateStudentModalLabel">Add new Student</h5>
+                            <h5 class="modal-title fs-5" id="updateStudentModalLabel_{{student.id }}">Add new Student</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
                           <div class="modal-body">
