@@ -21,6 +21,15 @@
   <body>
     <center><h1 class="my-5">CRUD OPERATION</h1></center>
     <div class="container mt-5 p-5 border rounded">
+
+    {% if messages %}
+      {% for message in messages %}
+        <div class="alert alert-success text-center mb-3">
+          {{message}}
+        </div>
+      {% endfor %}
+    {% endif %}
+
         <div class="d-flex justify-content-between align-items-center">
             <a href="" data-bs-toggle="modal" data-bs-target="#addStudentModal" class="btn btn-primary px-5 py-2btn-sm">Add new student</a>
             <div>
@@ -52,7 +61,7 @@
                 <td>{{student.address}}</td>
                 <td>
                     <a href="" data-bs-toggle="modal" data-bs-target="#updateStudentModal_{{student.id}}" class="btn btn-success btn-sm"><i class="fa-regular fa-pen-to-square"></i></a>
-                    <a href="" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></a>
+                    <a href="" data-bs-toggle="modal" data-bs-target="#deleteStudentModal_{{student.id}}" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></a>
                 </td>
                </tr>
                <!--update student mode -->
@@ -62,10 +71,11 @@
                     <div class="modal-dialog"> 
                         <div class="modal-content">
                           <div class="modal-header">
-                            <h5 class="modal-title fs-5" id="updateStudentModalLabel_{{student.id }}">Add new Student</h5>
+                            <h5 class="modal-title fs-5" id="updateStudentModalLabel_{{student.id }}">Update Student</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
                           <div class="modal-body">
+                            <input type="hidden" name="id" value="{{student.id}}">
                             <div class="">
                               <label for="first_name">First Name</label>
                               <input type="text" name="first_name" class="form-control" value="{{student.first_name}}" id="first_name" required>
@@ -89,12 +99,33 @@
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary" name="add">Add New Student</button>
+                            <button type="submit" class="btn btn-primary" name="update">Add New Student</button>
                           </div>
                         </div>
                       </div>
                 </form>
               </div>
+
+
+              <!--Delete Student Modal -->
+  <div class="modal fade" id="deleteStudentModal_{{student.id}}" tabindex="-1" aria-labelledby="deleteStudentModalLabel_{{student.id}}" aria-hidden="true">
+    <form action="" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="id" value="{{sutdent.id}}">
+        <div class="modal-dialog"> 
+            <div class="modal-content">
+              <div class="modal-body">
+                <p>Are you sure? You want to Delete</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-danger" name="delete">Delete</button>
+              </div>
+            </div>
+          </div>
+    </form>
+  </div>
+  
             {%endfor%}
 
             </tbody>
