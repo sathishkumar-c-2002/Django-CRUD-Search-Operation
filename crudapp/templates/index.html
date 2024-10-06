@@ -107,24 +107,24 @@
               </div>
 
 
-              <!--Delete Student Modal -->
-  <div class="modal fade" id="deleteStudentModal_{{student.id}}" tabindex="-1" aria-labelledby="deleteStudentModalLabel_{{student.id}}" aria-hidden="true">
-    <form action="" method="post">
-        {% csrf_token %}
-        <input type="hidden" name="id" value="{{sutdent.id}}">
-        <div class="modal-dialog"> 
-            <div class="modal-content">
+         <!--Delete Student Modal -->
+<div class="modal fade" id="deleteStudentModal_{{student.id}}" tabindex="-1" aria-labelledby="deleteStudentModalLabel_{{student.id}}" aria-hidden="true">
+  <form action="" method="post">
+      {% csrf_token %}
+      <input type="hidden" name="id" value="{{student.id}}">
+      <div class="modal-dialog"> 
+          <div class="modal-content">
               <div class="modal-body">
-                <p>Are you sure? You want to Delete</p>
+                  <p>Are you sure? You want to Delete</p>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-danger" name="delete">Delete</button>
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-danger" name="delete">Delete</button>
               </div>
-            </div>
           </div>
-    </form>
-  </div>
+      </div>
+  </form>
+</div>
   
             {%endfor%}
 

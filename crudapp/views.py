@@ -36,6 +36,12 @@ def index(request):
             update_student.address = address
             update_student.save()
             messages.success(request,"Student Updated Successfully")
+        
+        elif "delete" in request.POST:
+            id = request.POST.get("id")
+            Student.objects.get(id=id).delete()
+            
+            messages.success(request,"Deleted Successfully")
                 
             
     return render(request,"index.html",{"students": students})
