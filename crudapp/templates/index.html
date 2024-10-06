@@ -34,8 +34,9 @@
             <a href="" data-bs-toggle="modal" data-bs-target="#addStudentModal" class="btn btn-primary px-5 py-2btn-sm">Add new student</a>
             <div>
                 <form action="" method="post" class="d-flex">
-                    <input type="search" name="search" class="form-control">
-                    <button class="btn btn-success mx-2">Search</button>
+                  {% csrf_token %}
+                    <input type="search" name="searchquery" class="form-control" placeholder="Search">
+                    <button class="btn btn-success mx-2" name="search">Search</button>
                 </form>
             </div>
         </div>

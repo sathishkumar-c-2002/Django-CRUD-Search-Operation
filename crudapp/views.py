@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from .models import Student
 from django.contrib import messages
+from django.db.models import Q
+
+
 # Create your views here.
 def index(request):
     students = Student.objects.all()
@@ -42,6 +45,15 @@ def index(request):
             Student.objects.get(id=id).delete()
             
             messages.success(request,"Deleted Successfully")
+        
+        elif "search" in request.POST:
+            query = request.POST.get("searchquery")
+            students = Student.objects.filter(
+                Q(first_name__icontains=query)| 
+                Q(last_name__icontains=query)|
+                Q(phone__icontains=query)|
+                Q(email__icontains=query)|
+                Q(address__icontains=query))         
                 
             
     return render(request,"index.html",{"students": students})
